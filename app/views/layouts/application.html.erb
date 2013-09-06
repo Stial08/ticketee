@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Ticketee</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Ticketee</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 
-<%= yield %>
+    <link data-turbolinks-track="true" href="/stylesheets/application.css" media="all" rel="stylesheet" />
+    <%= stylesheet_link_tag "application", media: "all","data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-</body>
+    <% flash.each do |key, value| %>
+      <div class='flash' id='<%= key %>'>
+        <%= value %>
+      </div>
+    <% end %>
+    <%= yield %>
+
+  </body>
 </html>
