@@ -2,6 +2,7 @@
 <ul>
 <% @projects.each do |project| %>
 <li><%= link_to project.name, project %></li>
+<%= link_to "Edit Project", edit_project_path(@project) %>
 <% end %>
 </ul>
 
