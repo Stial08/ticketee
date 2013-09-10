@@ -27,6 +27,7 @@ class TicketsController < ApplicationController
   def show
     @ticket = Ticket.find(params[:id])
     @comment = @ticket.comments.build
+    @state = State.all
   end
 
   def edit
@@ -53,7 +54,7 @@ class TicketsController < ApplicationController
   private
   def ticket_params
     params.require(:ticket).permit(:title, :description,
-                                   assets_attributes: [:asset])
+                                   assets_attributes: [:asset:])
   end
 
   private
