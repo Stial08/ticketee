@@ -28,6 +28,7 @@ class TicketsController < ApplicationController
 
   def show
     @ticket = Ticket.find(params[:id])
+    @comment = @ticket.comments.build
   end
 
   def edit
