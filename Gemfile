@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'cancan', '1.6.9'
+gem 'carrierwave', '0.8.0'
 
 group :doc do
   gem 'sdoc', require: false
