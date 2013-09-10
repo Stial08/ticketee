@@ -1,9 +1,14 @@
 require 'spec_helper'
 feature "Creating Tickets" do
-
   before do
     project = FactoryGirl.create(:project)
     user = FactoryGirl.create(:user)
+    #ticket = FactoryGirl.create(:ticket,
+                                #project: 'textater_2',
+                                #title: "Make it shiny!",
+                                #user: user.id,
+                                #description: "Gradients! Starbursts! Oh my!")
+    #ticket.update(user: user)
     visit '/'
     click_link project.name
     click_link "New Ticket"
@@ -43,11 +48,15 @@ feature "Creating Tickets" do
   scenario "Creating a ticket with an attachment" do
     fill_in "Title", with: "Add documentation for blink tag"
     fill_in "Description", with: "The blink tag has a speed attribute"
-    attach_file "File", "spec/fixtures/speed.txt"
+    attach_file "File #1", Rails.root.join("spec/fixtures/speed.txt")
+    attach_file "File #2", Rails.root.join("spec/fixtures/spin.txt")
+    attach_file "File #3", Rails.root.join("spec/fixtures/gradient.txt")
     click_button "Create Ticket"
     expect(page).to have_content("Ticket has been created.")
-    within("#ticket .asset") do
+    within("#ticket .assets") do
       expect(page).to have_content("speed.txt")
+      expect(page).to have_content("spin.txt")
+      expect(page).to have_content("gradient.txt")
     end
   end
 end

@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130910085053) do
+ActiveRecord::Schema.define(version: 20130910122417) do
+
+  create_table "assets", force: true do |t|
+    t.string   "asset"
+    t.integer  "ticket_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "projects", force: true do |t|
     t.string   "name"
@@ -26,7 +33,6 @@ ActiveRecord::Schema.define(version: 20130910085053) do
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "asset"
     t.integer  "user_id"
   end
 
