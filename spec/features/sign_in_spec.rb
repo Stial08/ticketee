@@ -3,7 +3,7 @@ feature "signing in." do
   scenario 'Signing in via form' do
     user = FactoryGirl.create(:user)
     visit '/'
-    click_link 'Sign in'
+    click_link 'Sign In'
     fill_in 'signin_name', with: user.name
     fill_in 'signin_password', with: user.password
     click_button "Sign in"
