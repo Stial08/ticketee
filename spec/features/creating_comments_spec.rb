@@ -1,9 +1,11 @@
 require 'spec_helper'
+feature "Creating Comments" do
 before do
+  visit '/'
   user = FactoryGirl.create(:user)
-  project = FacrotyGirl.create(:project)
-  ticket = Factory.Girl.create(:ticket, project: project.name,title: "Make it Shiny",user: user.id,description: "Holis Holis Holis Holis Holis")
-  ticket.update(user: user)
+  project = FactoryGirl.create(:project)
+  #ticket = FactoryGirl.create(:ticket, project: project.name,title: "Make it Shiny",user: user.id,description: "Holis Holis Holis Holis Holis")
+  #ticket.update(user: user)
   visit '/'
   click_link 'Sign In'
   fill_in 'signin_name', with: user.name
@@ -11,11 +13,15 @@ before do
   click_button "Sign in"
   visit '/'
   click_link project.name
-  click_link ticket.name 
+  click_link "New Ticket" 
+  fill_in "Title", with: "Ticket name"
+  fill_in "Description", with: "My ticket for the comment"
+  click_button "Create Ticket"
 end
-feature "Creating comments" do
-  click_link "New Comment"
-  fill_in "text",with: "Added one Comment"
+scenario "create a cooment for ticket" do
+
+  fill_in "comment_text",with: "Added one Comment"
   click_button "Create Comment"
-  expect(page).to have_content('') 
+  expect(page).to have_content('Added one Comment') 
+end
 end

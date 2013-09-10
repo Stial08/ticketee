@@ -14,8 +14,6 @@ class TicketsController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @ticket = @project.tickets.build(ticket_params)
-    #@ticket.asset = params[:ticket][:asset]
-    #binding.pry
     @ticket.user = current_user
     if @ticket.save
       flash[:notice] = "Ticket has been created."
