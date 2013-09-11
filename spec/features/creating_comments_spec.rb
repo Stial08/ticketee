@@ -2,6 +2,7 @@ require 'spec_helper'
 feature "Creating Comments" do
   before do
     visit '/'
+    state = FactoryGirl.create(:state, :name => "Open")
     user = FactoryGirl.create(:user)
     project = FactoryGirl.create(:project)
     #ticket = FactoryGirl.create(:ticket, project: project.name,title: "Make it Shiny",user: user.id,description: "Holis Holis Holis Holis Holis")
