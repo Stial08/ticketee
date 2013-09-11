@@ -19,6 +19,9 @@
   <%= f.text_area :description %>
 </p>
 <p>
+<%= render "tags/form", :f => f %>
+</p>
+<p>
 
   <% number = 0 %>
   <%= f.fields_for :assets do |asset| %>
