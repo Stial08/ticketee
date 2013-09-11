@@ -51,6 +51,10 @@ class TicketsController < ApplicationController
     redirect_to @project
   end
 
+  def remove_tags
+
+  end
+
   private
   def ticket_params
     params.require(:ticket).permit(:title, :description, :tag_names,
