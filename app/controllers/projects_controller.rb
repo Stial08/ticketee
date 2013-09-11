@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   before_action :require_signin! 
-  before_action :authorize_admin!, except: [:index, :show]
+  #before_action :authorize_admin!, except: [:index, :show]
   before_action :set_project, only: [:show,
                                      :edit,
                                      :update,

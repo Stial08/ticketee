@@ -1,5 +1,5 @@
 <%= div_for(comment) do %>
   State: <%= state_for(comment) %>
-  <h4><%= comment.user.name %></h4>
-  <%= simple_format(comment.text) %>
+<h4><%= comment.user.name %></h4>
+<%= simple_format(comment.text) %>
 <% end %>

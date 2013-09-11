@@ -3,7 +3,9 @@
 <div id="ticket" >
   <%#<small id="author">Created by <%= @ticket.user.email%></small>%>
   <%= simple_format(@ticket.description)%>
-  <div id='tags'><%= render @ticket.tags %></div>
+  <div id='tags'>
+  <%= render @ticket.tags %>
+  </div>
   <h3>Attached File</h3>
   <div class="asset">
     <% @ticket.assets.each do |asset| %>
@@ -13,7 +15,6 @@
       <small><%= number_to_human_size(asset.asset.size) %></small>
     </p>
   <% end %>
-  <%= render @ticket.tags %>
 </div>
 </div>
 <div id='comments'>
