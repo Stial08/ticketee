@@ -9,7 +9,15 @@
       <% end %>
     </title>
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <style>
+      <% for state in @states %>
+        .state_<%= state.name.parameterize %> {
+          background: <%= state.background %>;
 
+          color: <%= state.color %>;
+        }
+      <% end %>
+    </style>
     <link data-turbolinks-track="true" href="/stylesheets/application.css" media="all" rel="stylesheet" />
     <%= stylesheet_link_tag "application", media: "all","data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>

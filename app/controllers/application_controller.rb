@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   #before_action :require_signin! 
 
   #protect_from_forgery with: :exception
+  before_filter :find_states
 
   def require_signin!
     if current_user == nil
@@ -16,6 +17,10 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.find_by_id!(session[:user_id]) if session[:user_id] != nil
+  end
+
+  def find_states
+    @states = State.all
   end
   helper_method :current_user
   helper_method :require_signin!
