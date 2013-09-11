@@ -3,6 +3,7 @@ class TicketsController < ApplicationController
   before_action :require_signin!, except: [:show, :index]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  after_create :creator_watches_me
 
   def new
     @project = Project.find(params[:project_id])
@@ -68,5 +69,11 @@ class TicketsController < ApplicationController
 
   def set_ticket
     @ticket = @project.tickets.find(params[:id])
+  end
+
+  def creator_watches_me
+    if user
+      self.watchers << user unless self.watchers.include?(user)
+    end
   end
 end
