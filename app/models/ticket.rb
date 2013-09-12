@@ -34,6 +34,7 @@ class Ticket < ActiveRecord::Base
       end
     end
   end
+  private
   def creator_watches_me
     if user
       self.watchers  << user unless self.watchers.include?(user)

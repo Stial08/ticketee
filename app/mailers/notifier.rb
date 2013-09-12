@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "stial08@gmail.com"
 
   def comment_updated(comment, user)
     @comment = comment
