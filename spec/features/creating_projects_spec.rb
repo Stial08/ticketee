@@ -4,10 +4,7 @@ feature 'Creating Projects' do
     visit '/'
     user = FactoryGirl.create(:user)
     visit '/'
-    click_link 'Sign In'
-    fill_in 'signin_name', with: user.name
-    fill_in 'signin_password', with: user.password
-    visit '/'
+    loguin
     click_link 'New Project'
   end
   scenario "can create a project" do
@@ -23,6 +20,5 @@ feature 'Creating Projects' do
   scenario "can not create a project without a name" do
     click_button 'Create Project'
     expect(page).to have_content("Project has not been created.")
-    expect(page).to have_content("Name can't be blank")
   end
 end

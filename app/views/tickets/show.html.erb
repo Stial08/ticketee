@@ -1,28 +1,28 @@
 <div id="ticket" >
   <small id="author">Created by <%= @ticket.user.email%></small>
-  <%= simple_format(@ticket.description)%>
+  <p><%= simple_format(@ticket.description)%></p>
   <h3>Attached File</h3>
   <div class="asset">
     <% @ticket.assets.each do |asset| %>
       <%= link_to File.basename(asset.asset.path), asset.asset.url %>
-    </p>
-    <p>
-      <small><%= number_to_human_size(asset.asset.size) %></small>
-    </p>
-  <% end %>
-</div>
+      <p>
+        <small><%= number_to_human_size(asset.asset.size) %></small>
+      </p>
+    <% end %>
+  </div>
   <div id='tags'> Tags:
-  <%= render @ticket.tags %>
+    <%= render @ticket.tags %>
   </div>
 </div>
 <div id='comments'>
-</h3>Comments</h3>
-<% if @ticket.comments.exists? %> 
-<%= render @ticket.state if @ticket.state %>
-<%= render @ticket.comments.select(&:persisted?) %>
-<% else %>
-  There are no comments for this ticket.
-<% end %>
-</div>
-<%= render "comments/form" %>
+  <h3>Comments</h3>
+  <div id='comments'>
+    <%= render @ticket.state if @ticket.state %>
+    <% if @ticket.comments.exists? %> 
+      <%= render @ticket.comments.select(&:persisted?) %>
+    <% else %>
+      There are no comments for this ticket.
+    <% end %>
+  </div>
+  <%= render "comments/form" %>
 </div>

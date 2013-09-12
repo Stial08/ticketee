@@ -6,6 +6,9 @@ class Ticket < ActiveRecord::Base
   before_create :associate_tags
   after_create :creator_watches_me
   
+  searcher do
+    label :tag, :from => :tags, :field => :name
+  end
   
   belongs_to :project
   belongs_to :user
@@ -14,9 +17,6 @@ class Ticket < ActiveRecord::Base
   has_many :comments, dependent: :delete_all
   has_and_belongs_to_many :tags
 
-  searcher do
-    label :tag, :from => :tags, :field => :name
-  end
 
   has_and_belongs_to_many :watchers, :join_table => "ticket_watchers",:class_name => "User"
  
