@@ -1,8 +1,9 @@
 class TicketsController < ApplicationController
 
-  #before_action :require_signin!, except: [:show, :index]
+  before_action :require_signin!, except: [:show, :index]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  #after_create :creator_watches_me
 
   def new
     @project = Project.find(params[:project_id])
@@ -51,8 +52,23 @@ class TicketsController < ApplicationController
     redirect_to @project
   end
 
-  def remove_tags
+  def search
+    @project = Project.find(params[:project_id])
+    @tickets = @project.tickets.search("tag:#{params[:search]}")
+    render "projects/show"
+  end
 
+  def watch
+    @project = Project.find(params[:project_id])
+    @ticket = @project.tickets.find(params[:id])
+    if @ticket.watchers.exists?(current_user)
+      @ticket.watchers -= [current_user]
+      flash[:notice] = "You are no longer watching this ticket."
+    else
+      @ticket.watchers << current_user
+      flash[:notice] = "You are now watching this ticket."
+    end
+    redirect_to project_ticket_path(@ticket.project, @ticket)
   end
 
   private
@@ -61,12 +77,17 @@ class TicketsController < ApplicationController
                                    assets_attributes: [:asset])
   end
 
-  private
   def set_project
     @project = Project.find(params[:project_id])
   end
 
   def set_ticket
     @ticket = @project.tickets.find(params[:id])
+  end
+
+  def creator_watches_me
+    if user
+      self.watchers << user unless self.watchers.include?(user)
+    end
   end
 end

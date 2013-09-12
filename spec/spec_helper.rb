@@ -40,3 +40,18 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+def loguin
+  user = FactoryGirl.create(:user)
+  visit '/'
+  click_link 'Sign In'
+  fill_in 'signin_name', with: user.name
+  fill_in 'signin_password', with: user.password
+  click_button "Sign in"
+  visit '/'
+end
+def create_ticket
+  click_link "New Ticket" 
+  fill_in "Title", with: "Ticket name"
+  fill_in "Description", with: "My ticket for the comment"
+  click_button "Create Ticket"
+end
