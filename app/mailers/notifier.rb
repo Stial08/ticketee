@@ -1,5 +1,6 @@
 class Notifier < ActionMailer::Base
-  default from: "stial08@gmail.com"
+  from_address = ActionMailer::Base.smtp_settings[:user_name]
+  default from: "From: TicketeAplicatio "
 
   def comment_updated(comment, user)
     @comment = comment
@@ -7,6 +8,6 @@ class Notifier < ActionMailer::Base
     @ticket = comment.ticket
     @project = @ticket.project
     subject = "[ticketee] #{@project.name} - #{@ticket.title}"
-    mail(:to => user.email, :subject => subject)
+    mail(:to => @user.email, :subject => subject)
   end
 end
