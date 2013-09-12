@@ -25,4 +25,10 @@ Ticketee::Application.routes.draw do
       end
     end
   end
+  ### API
+  namespace :api do
+    namespace :v1 do
+      resources :projects
+    end
+  end
 end
