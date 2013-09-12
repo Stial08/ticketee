@@ -3,7 +3,7 @@ class TicketsController < ApplicationController
   before_action :require_signin!, except: [:show, :index]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
-  after_create :creator_watches_me
+  #after_create :creator_watches_me
 
   def new
     @project = Project.find(params[:project_id])
@@ -52,8 +52,10 @@ class TicketsController < ApplicationController
     redirect_to @project
   end
 
-  def remove_tags
-
+  def search
+    @project = Project.find(params[:project_id])
+    @tickets = @project.tickets.search(params[:search])
+    render "projects/show"
   end
 
   private

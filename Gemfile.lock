@@ -1,5 +1,11 @@
+GIT
+  remote: git://github.com/Stial08/searcher
+  revision: bc4b9aaf6bdc14051d42611c389ab5042789fbb1
+  specs:
+    searcher (0.0.6)
+      activerecord (~> 4.0)
+
 GEM
-  remote: https://rubygems.org/
   remote: https://rubygems.org/
   specs:
     actionmailer (4.0.0)
@@ -169,6 +175,7 @@ DEPENDENCIES
   rspec-rails (~> 2.13.2)
   sass-rails (~> 4.0.0)
   sdoc
+  searcher!
   sprockets-rails (~> 2.0.0)
   sqlite3
   turbolinks
