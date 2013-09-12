@@ -59,6 +59,8 @@ class TicketsController < ApplicationController
   end
 
   def watch
+    @project = Project.find(params[:project_id])
+    @ticket = @project.tickets.find(params[:id])
     if @ticket.watchers.exists?(current_user)
       @ticket.watchers -= [current_user]
       flash[:notice] = "You are no longer watching this ticket."
@@ -75,7 +77,6 @@ class TicketsController < ApplicationController
                                    assets_attributes: [:asset])
   end
 
-  private
   def set_project
     @project = Project.find(params[:project_id])
   end
