@@ -15,6 +15,11 @@
   </div>
 </div>
 <div id='comments'>
+  <span id='watchers'>
+    <%= toggle_watching_button %>
+    <strong>Watchers:</strong>
+    <%= @ticket.watchers.map(&:email).to_sentence %>
+  </span>
   <h3>Comments</h3>
   <div id='comments'>
     <%= render @ticket.state if @ticket.state %>

@@ -54,8 +54,19 @@ class TicketsController < ApplicationController
 
   def search
     @project = Project.find(params[:project_id])
-    @tickets = @project.tickets.search(params[:search])
+    @tickets = @project.tickets.search("tag:#{params[:search]}")
     render "projects/show"
+  end
+
+  def watch
+    if @ticket.watchers.exists?(current_user)
+      @ticket.watchers -= [current_user]
+      flash[:notice] = "You are no longer watching this ticket."
+    else
+      @ticket.watchers << current_user
+      flash[:notice] = "You are now watching this ticket."
+    end
+    redirect_to project_ticket_path(@ticket.project, @ticket)
   end
 
   private
