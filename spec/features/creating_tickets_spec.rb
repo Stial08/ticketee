@@ -2,12 +2,6 @@ require 'spec_helper'
 feature "Creating Tickets" do
   before do
     project = FactoryGirl.create(:project)
-    user = FactoryGirl.create(:user)
-    ticket = FactoryGirl.create(:ticket, #project: 'textater_2',
-                                title: "Make it shiny!",
-                                user: user.id,
-                                description: "Gradients! Starbursts! Oh my!")
-    ticket.update(user: user)
     loguin 
     click_link project.name
     click_link "New Ticket"
@@ -47,7 +41,7 @@ feature "Creating Tickets" do
     attach_file "File #3", Rails.root.join("spec/fixtures/gradient.txt")
     click_button "Create Ticket"
     expect(page).to have_content("Ticket has been created.")
-    within("#ticket .assets") do
+    within(".assets") do
       expect(page).to have_content("speed.txt")
       expect(page).to have_content("spin.txt")
       expect(page).to have_content("gradient.txt")

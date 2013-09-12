@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
 
 
   def update
-    if @project.update(params[:project])
+    if @project.update(project_params)
       flash[:notice] = "Project has been updated."
       redirect_to @project
     else
