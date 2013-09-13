@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130911212937) do
+ActiveRecord::Schema.define(version: 20130913201438) do
 
   create_table "assets", force: true do |t|
     t.string   "asset"
@@ -35,7 +35,10 @@ ActiveRecord::Schema.define(version: 20130911212937) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id"
 
   create_table "states", force: true do |t|
     t.string "name"
@@ -76,7 +79,9 @@ ActiveRecord::Schema.define(version: 20130911212937) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin",                default: false
+    t.string   "authentication_token"
+    t.integer  "request_count",        default: 0
   end
 
 end
