@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def new
     @user = User.new
+    respond_with(Project.for(current_user).all)
   end
 
   def create
