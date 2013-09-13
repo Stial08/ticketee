@@ -22,6 +22,11 @@ class Api::V1::ProjectsController < Api::V1::BaseController
     respond_with(@project)
   end
 
+  def destroy
+    @project.destroy
+    respond_with(@project)
+  end
+
   private
   def find_project
     @project = Project.all.where('user_id = ?', current_user) 
