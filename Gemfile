@@ -6,6 +6,7 @@ gem 'carrierwave', '0.8.0'
 gem 'devise'
 gem 'pry'
 gem 'searcher', git: 'git://github.com/Stial08/searcher'
+gem 'omniauth-twitter',:git => 'https://github.com/arunagw/omniauth-twitter.git'
 
 group :doc do
   gem 'sdoc', require: false
