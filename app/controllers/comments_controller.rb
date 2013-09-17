@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
 
-  before_action :require_signin!, except: [:show, :index]
-  before_action :require_signin! 
+  before_filter :authenticate_user!
   before_filter :find_ticket
 
  

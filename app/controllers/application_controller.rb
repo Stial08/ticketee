@@ -7,30 +7,30 @@ class ApplicationController < ActionController::Base
   #protect_from_forgery with: :exception
   before_filter :find_states
 
-  def require_signin!
-    if current_user == nil
-      session[:intended_destination] = request.fullpath
-      flash[:alert] = "You need to sign in or sign up before continuing."
-      redirect_to signin_url
-    end
-  end
+  #def require_signin!
+    #if current_user == nil
+      #session[:intended_destination] = request.fullpath
+      #flash[:alert] = "You need to sign in or sign up before continuing."
+      #redirect_to signin_url
+    #end
+  #end
 
-  def current_user
-    @current_user ||= User.find_by_id!(session[:user_id]) if session[:user_id] != nil
-  end
+  #def current_user
+    #@current_user ||= User.find_by_id!(session[:user_id]) if session[:user_id] != nil
+  #end
 
-  def authorize_admin!
-    require_signin!
-    unless current_user.admin?
-      flash[:alert] = "You must be an admin to do that."
-      redirect_to root_path
-    end
-  end
+  #def authorize_admin!
+    #require_signin!
+    #unless current_user.admin?
+      #flash[:alert] = "You must be an admin to do that."
+      #redirect_to root_path
+    #end
+  #end
 
   def find_states
     @states = State.all
   end
-  helper_method :current_user
-  helper_method :require_signin!
+  #helper_method :current_user
+  #helper_method :require_signin!
 
 end
