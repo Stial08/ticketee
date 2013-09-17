@@ -3,7 +3,7 @@ class Api::V1::ProjectsController < Api::V1::BaseController
   before_filter :find_project, :only => [:show, :update]
 
   def index
-    respond_with(Project.all.where('user_id = ?', current_user))
+    respond_with(Project.all.where('user_id = ?', current_user.id))
   end
   def create
     project = Project.new(params[:project])
