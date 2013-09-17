@@ -1,6 +1,7 @@
 class TicketsController < ApplicationController
 
-  before_action :require_signin!, except: [:show, :index]
+  
+ before_filter :authenticate_user! , except: [:show, :index]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
   #after_create :creator_watches_me
@@ -26,6 +27,7 @@ class TicketsController < ApplicationController
   end
 
   def show
+    binding.pry
     @ticket = Ticket.find(params[:id])
     @comment = @ticket.comments.build
     @states = State.all

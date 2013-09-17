@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'cancan', '1.6.9'
 gem 'carrierwave', '0.8.0'
+gem 'devise'
 gem 'pry'
 gem 'searcher', git: 'git://github.com/Stial08/searcher'
 
