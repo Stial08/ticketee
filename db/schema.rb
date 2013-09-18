@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130917200209) do
+ActiveRecord::Schema.define(version: 20130918215002) do
 
   create_table "assets", force: true do |t|
     t.string   "asset"
@@ -94,6 +94,10 @@ ActiveRecord::Schema.define(version: 20130917200209) do
     t.string   "twitter_id"
     t.string   "twitter_screen_name"
     t.string   "twitter_display_name"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
