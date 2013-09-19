@@ -8,6 +8,7 @@ gem 'pry'
 gem 'searcher', git: 'git://github.com/Stial08/searcher'
 gem 'omniauth-twitter',:git => 'https://github.com/arunagw/omniauth-twitter.git'
 gem 'omniauth-github', :git => 'https://github.com/intridea/omniauth-github.git'
+gem 'kaminari'
 
 group :doc do
   gem 'sdoc', require: false
