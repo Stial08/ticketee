@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_or_create_for_github(response)
-    data = response['extra']['raw_inf']
+    data = response['extra']['raw_info']
     if user = User.find_by_github_id(data["id"])
       user
     else # Create a user with a stub password.
