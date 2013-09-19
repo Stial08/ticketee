@@ -27,7 +27,6 @@ class TicketsController < ApplicationController
   end
 
   def show
-    binding.pry
     @ticket = Ticket.find(params[:id])
     @comment = @ticket.comments.build
     @states = State.all

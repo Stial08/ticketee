@@ -49,7 +49,6 @@ Devise.setup do |config|
   # config.params_authenticatable = true
 
   # Tell if authentication through HTTP Auth is enabled. False by default.
-  # It can be set to an array that will enable http authentication only for the
   # given strategies, for example, `config.http_authenticatable = [:token]` will
   # enable it only for token authentication. The supported strategies are:
   # :database      = Support basic authentication with authentication key + password
@@ -220,6 +219,9 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
+  
+  config.omniauth :twitter, 'ehvfVRCb2UcNRQCJ3Uw','zMN7eLpgRlGCwl6LVubiTWJ3Ju1HydTzvp40lCGI'
+  config.omniauth :github, '4e22161c0ee0929dadde','b9a652fac4b22e29d249ca38ec8fb0606bc10941'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
