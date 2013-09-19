@@ -56,6 +56,7 @@ class TicketsController < ApplicationController
   def search
     @project = Project.find(params[:project_id])
     @tickets = @project.tickets.search("tag:#{params[:search]}")
+    @tickets = @tickets.page(params[:page]).per(5)
     render "projects/show"
   end
 

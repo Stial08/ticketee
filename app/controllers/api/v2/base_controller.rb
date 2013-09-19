@@ -1,4 +1,4 @@
-class Api::V1::BaseController < ActionController::Base
+class Api::V2::BaseController < ActionController::Base
   respond_to :json, :xml
 
   before_action :authenticate_user!
@@ -11,6 +11,8 @@ class Api::V1::BaseController < ActionController::Base
      error = { :error => "Rate limit exceeded." }
      respond_with(error, :status => 403)
      @user = current_user
+     @user.request_count = 0 
+     @user.save
    else
      current_user.increment!(:request_count)
    end

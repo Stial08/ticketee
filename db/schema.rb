@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20130919025558) do
     t.integer  "state_id"
   end
 
+  add_index "tickets", ["project_id"], name: "index_tickets_on_project_id"
   add_index "tickets", ["state_id"], name: "index_tickets_on_state_id"
   add_index "tickets", ["user_id"], name: "index_tickets_on_user_id"
 
