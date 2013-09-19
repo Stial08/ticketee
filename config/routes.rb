@@ -1,5 +1,6 @@
 Ticketee::Application.routes.draw do
 
+
   #devise_for :users
 
   devise_for :users, :controllers => {
@@ -34,5 +35,11 @@ Ticketee::Application.routes.draw do
         resources :tickets, defaults: {format: :json}
       end
     end
+    namespace :v2 do
+      resources :projects, defaults: {format: :json} do
+        resources :tickets, defaults: {format: :json}
+      end
+    end
   end
+
 end
