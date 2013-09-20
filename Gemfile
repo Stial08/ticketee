@@ -12,9 +12,10 @@ gem 'omniauth-twitter',:git => 'https://github.com/arunagw/omniauth-twitter.git'
 gem 'omniauth-github', :git => 'https://github.com/intridea/omniauth-github.git'
 gem 'kaminari'
 
-
-## Worker
 gem 'delayed_job_active_record'
+gem 'actionpack-action_caching'
+#observers
+gem 'rails-observers'
 
 group :doc do
   gem 'sdoc', require: false

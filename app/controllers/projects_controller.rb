@@ -1,6 +1,11 @@
 class ProjectsController < ApplicationController
 
   before_filter :authenticate_user!
+
+  caches_action :show, :cache_path => (proc do 
+    project_path(project_path(params[:id]) +"/#{current_user.id}/#{params[:page] || 1}")
+  end)
+
   #before_action :authorize_admin!, except: [:index, :show]
   before_action :set_project, only: [:show,
                                      :edit,
