@@ -14,6 +14,8 @@ gem 'kaminari'
 
 gem 'delayed_job_active_record'
 gem 'actionpack-action_caching'
+#observers
+gem 'rails-observers'
 
 group :doc do
   gem 'sdoc', require: false
