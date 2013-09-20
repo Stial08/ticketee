@@ -14,7 +14,7 @@ gem 'kaminari'
 
 
 ## Worker
-gem 'delayed_job'
+gem 'delayed_job_active_record'
 
 group :doc do
   gem 'sdoc', require: false
